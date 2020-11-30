@@ -2,6 +2,7 @@ class Game < ApplicationRecord
   belongs_to :system_requirement
   
   has_one :product, as: :productable
+  has_many :license
 
   validates :mode, presence: true
   validates :release_date, presence: true
