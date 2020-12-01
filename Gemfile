@@ -19,6 +19,8 @@ gem 'rack-cors', '~> 1.1.1'
 # Rendering
 gem 'jbuilder', '~> 2.10.1'
 
+#Rubocop
+gem 'rubocop', require: false
 
 #MailerCSS
 gem 'inky-rb', require: 'inky'

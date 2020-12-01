@@ -1,3 +1,3 @@
 json.users do
-    json.array! @users, :id, :name, :profile
+    json.array! @loading_service.records, :id, :name, :profile
 end

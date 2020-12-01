@@ -4,7 +4,8 @@ module Admin::V1
         before_action :load_license, only: [:update, :destroy, :show]
 
         def index
-            @licenses = License.all
+          @loading_service = Admin::ModelLoadingService.new(License.all, searchable_params)
+          @loading_service.call
         end
 
         def create
@@ -30,6 +31,10 @@ module Admin::V1
 
             def load_license
                 @license = License.find(params[:id])
+            end
+
+            def searchable_params
+              params.permit({ order: {} }, :page, :length)
             end
 
             def license_params

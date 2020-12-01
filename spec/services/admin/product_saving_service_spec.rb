@@ -244,6 +244,7 @@ def error_proof_call(*params)
     begin
         service.call
     rescue => e
+      "ERROR: #{e.message}"
     end
     return service
 end

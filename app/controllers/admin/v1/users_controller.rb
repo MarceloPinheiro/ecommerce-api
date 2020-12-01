@@ -4,7 +4,8 @@ module Admin::V1
         before_action :load_user, only: [:update, :destroy]
 
         def index
-            @users = User.all()
+          @loading_service = Admin::ModelLoadingService.new(User.all, searchable_params)
+          @loading_service.call
         end
 
         def create
@@ -28,6 +29,10 @@ module Admin::V1
 
             def load_user
                 @user = User.find(params[:id])
+            end
+
+            def searchable_params
+              params.permit({ search: :name }, { order: {} }, :page, :length)
             end
 
             def user_params
